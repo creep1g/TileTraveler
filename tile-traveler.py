@@ -1,3 +1,4 @@
+https://github.com/creep1g/TileTraveler
 #Global reitir
 square1_1 = "(N)orth."
 square1_2 = "(N)orth or (E)ast or (S)outh."
@@ -9,51 +10,33 @@ square3_1 = "(N)orth."
 square3_2 = "(N)orth or (S)outh."
 square3_3 = "(S)outh or (W)est."
 
+
 def walls(directions, row, column):
+    '''Innri veggir - gefur True ef það má ekki fara í ákveðna átt, annars False'''
     if column == 1 and row == 1:
-        if directions == "e":
+        if directions.lower() == "e":
             return True
-        elif directions == "s":
+    elif column == 2 and row == 1:
+        if directions.lower() == "e":
             return True
-        elif directions == "w":
+        elif directions.lower() == "w":
             return True
-    if column == 1 and row == 2:
-        if directions == "w":
+    elif column == 2 and row == 2:
+        if directions.lower() == "e":
             return True
-    if column == 1 and row == 3:
-        if directions == "n":
+        elif directions.lower() == "n":
             return True
-    if column == 2 and row == 1:
-        if directions == "e":
+    elif column == 2 and row == 3:       
+        if directions.lower() == "s":
             return True
-        elif directions == "s":
-            return True
-        elif directions == "w":
-            return True
-    if column == 2 and row == 2:
-        if directions == "e":
-            return True
-        elif directions == "n":
-            return True
-    if column == 2 and row == 3:       
-        if directions == "s":
-            return True
-        elif directions == "n":
-            return True
-    if column == 3 and row == 2:
-        if directions == "e":
-            return True
-        elif directions == "w":
-            return True
-    if column == 3 and row == 3:
-        if directions == "e":
-            return True
-        elif directions == "n":
+    elif column == 3 and row == 2:
+        if directions.lower() == "w":
             return True
     else:
         return False
 
 def give_directions(row, column):
+    '''Finnur staðsetningu leikmans og gefur viðeigandi skilaboð'''
     if row == 1 and column == 1:
         return square1_1
     elif column == 1 and row == 2:
@@ -74,6 +57,8 @@ def give_directions(row, column):
         return square3_3
 
 def move_player(user_input, row, column):
+    '''Athugar hvort leikamaður hefur valið mögulega átt skilar þeim hnitum ef svo er
+    annars skilar hann None og leikmaður færist ekki um reit'''
     user_input = user_input.lower()
 
     if walls(user_input, row, column):
@@ -97,10 +82,12 @@ def move_player(user_input, row, column):
     else:
         return None
 
+# Byrjunarreitur
 row, column = 1,1
 
 bool_controler = True
 while bool_controler == True:
+
     print("You can travel:", give_directions(row, column))
     directions = input("Direction: ")
 
@@ -108,9 +95,9 @@ while bool_controler == True:
         print("Not a valid direction!")
     else:
         row, column = move_player(directions, row, column)
-
+    # Athugar hvort leikmaður sé á vinningsreitinum
     if row == 1 and column == 3:
-        break
+        bool_controler = False
 
 print("Victory!")
 
