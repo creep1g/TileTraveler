@@ -7,7 +7,7 @@ square2_2 = "(S)outh or (W)est."
 square2_3 = "(E)ast or (W)est."
 square3_1 = "(N)orth."
 square3_2 = "(N)orth or (S)outh."
-square3_3 = "(W)est or (S)outh."
+square3_3 = "(S)outh or (W)est."
 
 def give_directions(row, column):
     if row == 1 and column == 1:
