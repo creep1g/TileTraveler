@@ -9,6 +9,50 @@ square3_1 = "(N)orth."
 square3_2 = "(N)orth or (S)outh."
 square3_3 = "(S)outh or (W)est."
 
+def walls(directions, row, column):
+    if column == 1 and row == 1:
+        if directions == "e":
+            return True
+        elif directions == "s":
+            return True
+        elif directions == "w":
+            return True
+    if column == 1 and row == 2:
+        if directions == "w":
+            return True
+    if column == 1 and row == 3:
+        if directions == "n":
+            return True
+    if column == 2 and row == 1:
+        if directions == "e":
+            return True
+        elif directions == "s":
+            return True
+        elif directions == "w":
+            return True
+    if column == 2 and row == 2:
+        if directions == "e":
+            return True
+        elif directions == "n":
+            return True
+    if column == 2 and row == 3:       
+        if directions == "s":
+            return True
+        elif directions == "n":
+            return True
+    if column == 3 and row == 2:
+        if directions == "e":
+            return True
+        elif directions == "w":
+            return True
+    if column == 3 and row == 3:
+        if directions == "e":
+            return True
+        elif directions == "n":
+            return True
+    else:
+        return False
+
 def give_directions(row, column):
     if row == 1 and column == 1:
         return square1_1
@@ -31,6 +75,9 @@ def give_directions(row, column):
 
 def move_player(user_input, row, column):
     user_input = user_input.lower()
+
+    if walls(user_input, row, column):
+        return None
     if user_input == "w":
         if column > 1:
             column -= 1
