@@ -1,5 +1,5 @@
 #Global reitir
-square1_1 = "(N)orth"
+square1_1 = "(N)orth."
 square1_2 = "(N)orth or (E)ast or (S)outh."
 square1_3 = "(E)ast or (S)outh."
 square2_1 = "(N)orth."
