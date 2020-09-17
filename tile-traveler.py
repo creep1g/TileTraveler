@@ -8,6 +8,7 @@ square2_3 = "(E)ast or (W)est"
 square3_1 = "(N)orth"
 square3_2 = "(N)orth or (S)outh"
 square3_3 = "(W)est or (S)outh"
+
 def give_directions(row, column):
     if row == 1 and column == 1:
         return square1_1
@@ -28,33 +29,41 @@ def give_directions(row, column):
     elif column == 3 and row == 3:
         return square3_3
 
+def move_player(user_input, row, column):
+    user_input = user_input.lower()
+    if user_input == "w":
+        if column > 1:
+            column -= 1
+            return row, column
+    elif user_input == "e":
+        if column < 3:
+            column += 1
+            return row, column
+    elif user_input == "s":
+        if row > 1:
+            row -= 1
+            return row, column
+    elif user_input == "n":
+        if row < 3:
+            row += 1
+            return row, column
+    else:
+        return None
+
 row, column = 1,1
 
 bool_controler = True
 while bool_controler == True:
     print("You can travel:", give_directions(row, column))
-    directions = input("Directions: ")
-    if directions.lower() == "w":
-        if column > 1:
-            column -= 1
-        else:
-            print("Not a valid direction")
-    elif directions.lower() == "e":
-        if column < 3:
-            column += 1
-        else:
-            print("Not a valid direction")
-    elif directions.lower() == "s":
-        if row > 1:
-            row -= 1
-        else:
-            print("Not a valid direction")
-    elif directions.lower() == "n":
-        if row < 3:
-            row += 1
-        else:
-            print("Not a valid direction")
+    directions = input("Direction: ")
+
+    if move_player(directions, row, column) == None:
+        print("Not a valid direction")
+    else:
+        row, column = move_player(directions, row, column)
+
     if row == 1 and column == 3:
         break
 
 print("Victory!")
+
