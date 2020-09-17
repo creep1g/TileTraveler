@@ -1,13 +1,13 @@
 #Global reitir
 square1_1 = "(N)orth"
-square1_2 = "(N)orth or (E)ast or (S)outh"
-square1_3 = "(E)ast or (S)outh"
-square2_1 = "(N)orth"
-square2_2 = "(W)est or (S)outh"
-square2_3 = "(E)ast or (W)est"
-square3_1 = "(N)orth"
-square3_2 = "(N)orth or (S)outh"
-square3_3 = "(W)est or (S)outh"
+square1_2 = "(N)orth or (E)ast or (S)outh."
+square1_3 = "(E)ast or (S)outh."
+square2_1 = "(N)orth."
+square2_2 = "(S)outh or (W)est."
+square2_3 = "(E)ast or (W)est."
+square3_1 = "(N)orth."
+square3_2 = "(N)orth or (S)outh."
+square3_3 = "(W)est or (S)outh."
 
 def give_directions(row, column):
     if row == 1 and column == 1:
@@ -58,7 +58,7 @@ while bool_controler == True:
     directions = input("Direction: ")
 
     if move_player(directions, row, column) == None:
-        print("Not a valid direction")
+        print("Not a valid direction!")
     else:
         row, column = move_player(directions, row, column)
 
