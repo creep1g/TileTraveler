@@ -94,7 +94,7 @@ row, column = 1,1       # Byrjunarreitur.
 bool_controller = True
 
 while bool_controller == True:
-    # Keyrir þangað til notandi fer á reit (1,3), þá hættir keyrslan.
+    # Keyrir þangað til notandi fer á reit (3,1), þá hættir keyrslan.
     print("You can travel:", give_directions(row, column))
     directions = input("Direction: ")
     directions = directions.lower()     # Leyfir notanda að nota há & lágstafi.
